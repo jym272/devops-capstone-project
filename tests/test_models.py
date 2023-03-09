@@ -175,3 +175,9 @@ class TestAccount(unittest.TestCase):
         """It should not Deserialize an account with a TypeError"""
         account = Account()
         self.assertRaises(DataValidationError, account.deserialize, [])
+
+    def test_account_repr(self):
+        """It should represent an account as a string"""
+        account = AccountFactory()
+        account.create()
+        self.assertEqual(str(account), f"<Account {account.name} id=[{account.id}]>")
